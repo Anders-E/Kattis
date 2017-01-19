@@ -13,7 +13,7 @@ int main() {
         if (s[i++] != 'R') sum++;
     }
 
-    printf("%d", sum);
+    printf("%d\n", sum);
 
     return 0;
 }
