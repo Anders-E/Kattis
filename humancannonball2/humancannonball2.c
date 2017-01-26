@@ -12,21 +12,11 @@ double y_pos(float v, float theta, float t) {
 }
 
 char safe(float v, float theta, float x, float bot, float top) {
-    double y, t = 0.0;
+    double y, t;
     char s;
 
-    /* step forward until we get to wall */
-    while (x_pos(v, theta, t) < x) {
-        t += 0.01;
-        if (y_pos(v, theta, t) < 0) { /* if cannonball touches ground */
-            y = 0.0;
-            break;
-        }
-    }
-
-    /* get y-position */
+    t = x / (v * cos(theta));
     y = y_pos(v, theta, t);
-    /* if safely within hole in wall, 1, else 0 */
     s = (y >= bot + 1 && y <= top - 1) ? 1 : 0;
 
     return s;
