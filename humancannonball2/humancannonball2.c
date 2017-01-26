@@ -13,13 +13,10 @@ double y_pos(float v, float theta, float t) {
 
 char safe(float v, float theta, float x, float bot, float top) {
     double y, t;
-    char s;
 
     t = x / (v * cos(theta));
     y = y_pos(v, theta, t);
-    s = (y >= bot + 1 && y <= top - 1) ? 1 : 0;
-
-    return s;
+    return (y >= bot + 1 && y <= top - 1) ? 1 : 0;
 }
 
 int main() {
