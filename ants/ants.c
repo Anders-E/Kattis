@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 int MAX(int x, int y) {
     return x > y ? x : y;
@@ -7,10 +6,6 @@ int MAX(int x, int y) {
 
 int MIN(int x, int y) {
     return x < y ? x : y;
-}
-
-int MID(int x, int y, int z) {
-    return abs(x-z/2) < abs(y-z/2) ? x : y;
 }
 
 void ants() {
