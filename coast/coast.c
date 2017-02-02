@@ -3,13 +3,12 @@
 
 int coast_search(char *map, char *visited, int n, int m, int i, int j, int len) {
     int offset = i * m + j;
-
+    
     if (visited[offset])
         return len;
 
-    if (map[offset] == '1') {
+    if (map[offset] == '1')
         return len + 1;
-    }
 
     visited[offset] = 1;
 
@@ -28,13 +27,13 @@ int coast_search(char *map, char *visited, int n, int m, int i, int j, int len) 
 int coast_length(char *map, char *visited, int n, int m) {
     int i, j, len = 0;
 
-    for (i = 0, j = 0; j < m - 1; j++) /* north side */
+    for (i = 0, j = 0; j < m; j++) /* north side */
         len = coast_search(map, visited, n, m, i, j, len);
-    for (; i < n - 1; i++) /* east side */
+    for (j = m - 1; i < n; i++)             /* east side */
         len = coast_search(map, visited, n, m, i, j, len);
-    for (; j > 0; j--) /* south side */
+    for (i = n - 1; j >= 0; j--)            /* south side */
         len = coast_search(map, visited, n, m, i, j, len);
-    for (; i > 1; i--) /* west side */
+    for (j = 0; i >= 0; i--)            /* west side */
         len = coast_search(map, visited, n, m, i, j, len);
 
     return len;
