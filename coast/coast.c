@@ -27,13 +27,14 @@ int coast_search(char *map, char *visited, int n, int m, int i, int j, int len) 
 int coast_length(char *map, char *visited, int n, int m) {
     int i, j, len = 0;
 
+    /* Visit all borders going clockwise */
     for (i = 0, j = 0; j < m; j++) /* north side */
         len = coast_search(map, visited, n, m, i, j, len);
-    for (j = m - 1; i < n; i++)             /* east side */
+    for (j = m - 1; i < n; i++)    /* east side */
         len = coast_search(map, visited, n, m, i, j, len);
-    for (i = n - 1; j >= 0; j--)            /* south side */
+    for (i = n - 1; j >= 0; j--)   /* south side */
         len = coast_search(map, visited, n, m, i, j, len);
-    for (j = 0; i >= 0; i--)            /* west side */
+    for (j = 0; i >= 0; i--)       /* west side */
         len = coast_search(map, visited, n, m, i, j, len);
 
     return len;
@@ -41,11 +42,11 @@ int coast_length(char *map, char *visited, int n, int m) {
 
 int main() {
     int n, m, i;
-    char *map, *visited;
+    char *map, *visited, *tmp;
 
     scanf("%d %d", &n, &m);
 
-    map = malloc(n * m * sizeof(char));
+    map = malloc(n * m * sizeof(char) + 1); /* + 1 for the last null byte */
     visited = calloc(sizeof(char), n * m);
 
     for (i = 0; i < n * m; i += m)
