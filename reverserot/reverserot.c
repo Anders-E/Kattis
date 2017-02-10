@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-static char ALPHA[28] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ_.";
+#define ALPHA_OFFSET 65
 
 void rev(char *s) {
     int i = 0;
@@ -17,9 +17,25 @@ void rev(char *s) {
     }
 }
 
+void convert_to(char *c) {
+    *c = (*c == '_')  ? '['  : *c;
+    *c = (*c == '.')  ? '\\' : *c;
+}
+
+void convert_from(char *c) {
+    *c = (*c == '[')  ? '_'  : *c;
+    *c = (*c == '\\') ? '.'  : *c;
+}
+
 void rot(char *s, int n) {
-    while (*s)
-        continue;
+    while (*s) {
+        convert_to(s);
+        *s -= ALPHA_OFFSET;
+        *s = (*s + n) % 28;
+        *s += ALPHA_OFFSET;
+        convert_from(s);
+        s++;
+    }
 }
 
 int main() {
