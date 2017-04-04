@@ -12,5 +12,7 @@ int main() {
     }
 
     printf("%d\n", sum + x);
+
+    return 0;
 }
 
