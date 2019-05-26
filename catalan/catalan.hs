@@ -15,7 +15,5 @@ choose n 0 = 1
 choose 0 k = 0
 choose n k = choose (n-1) (k-1) * n `div` k
 
-catas :: [Integer]
-catas = map cata [0..]
 cata :: Integer -> Integer
 cata n = (2 * n) `choose` n `div` (n + 1)
